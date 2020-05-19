@@ -50,24 +50,27 @@ function dragElement(elmnt) {
       pos3 = e.clientX;
       pos4 = e.clientY;
     }
-    // set the element's new position relative to the larger picture
-    let topPostion = ((elmnt.offsetTop - pos2) / base.offsetHeight) * 100;
-    let leftPosition = ((elmnt.offsetLeft - pos1) / base.offsetWidth) * 100;
-    // keep the food in bounds of the base pictures
-    if (topPostion < 0) {
-      topPostion = 0;
-    } else if (topPostion > 85) {
-      topPostion = 85;
-    }
+    // set the element's new position
+    let topPosition = elmnt.offsetTop - pos2;
+    let leftPosition = elmnt.offsetLeft - pos1;
 
+    // keep the food in bounds of the base pictures
+    let leftBound = base.offsetWidth - elmnt.offsetWidth;
+    let bottomBound = base.offsetHeight - elmnt.offsetHeight;
+
+    if (topPosition < 0) {
+      topPosition = 0;
+    } else if (topPosition > bottomBound) {
+      topPosition = bottomBound;
+    }
     if (leftPosition < 0) {
       leftPosition = 0;
-    } else if (leftPosition > 85) {
-      leftPosition = 85;
+    } else if (leftPosition > leftBound) {
+      leftPosition = leftBound;
     }
-
-    elmnt.style.top = `${topPostion}%`;
-    elmnt.style.left = `${leftPosition}%`;
+    // set the new positions in pixels
+    elmnt.style.top = `${topPosition}px`;
+    elmnt.style.left = `${leftPosition}px`;
   }
 
   function closeDragElement() {
@@ -76,5 +79,12 @@ function dragElement(elmnt) {
     document.ontouchcancel = null;
     document.onmouseup = null;
     document.onmousemove = null;
+
+    // convert position of element to a percentage so that it remains in place even if screen resizes. To avoid rounding errors, this is done last instead of as the element moves.
+    let topPercentage = (parseFloat(elmnt.style.top) / base.offsetHeight) * 100;
+    let leftPercentage =
+      (parseFloat(elmnt.style.left) / base.offsetWidth) * 100;
+    elmnt.style.top = `${topPercentage}%`;
+    elmnt.style.left = `${leftPercentage}%`;
   }
 }
