@@ -1,0 +1,120 @@
+/* CSS Variables */
+:root {
+  --header-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --primary-color: #08b6ce;
+  /* Spacing */
+  --margin-big: 15px;
+}
+
+/* Page Styles */
+html {
+  font-size: 1.125em;
+}
+
+body {
+  min-height: 100vh;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.title {
+  text-align: center;
+  margin: 0;
+  font-family: var(--header-font);
+  color: var(--primary-color);
+}
+
+.content {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#base-picture {
+  width: 100%;
+}
+
+#wrapper {
+  width: 1200px;
+  position: relative;
+}
+
+@media screen and (max-width: 1200px) {
+  #wrapper {
+    width: 100%;
+  }
+}
+
+.food {
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: move;
+  /*relative to the wrapper */
+  width: 15%;
+}
+
+/*dragable food itemS */
+#chicken {
+  top: 32%;
+  left: 15.9%;
+}
+#chocolate {
+  top: 28.1%;
+  left: 2%;
+}
+#crossiant {
+  top: 13.9%;
+  left: 9.1%;
+}
+#fries {
+  top: 48.2%;
+  left: 11.3%;
+}
+#hamburger {
+  top: 48.6%;
+  left: 22.3%;
+}
+#hotdog {
+  top: 42.6%;
+  left: 18.3%;
+}
+#pizza {
+  top: 35%;
+  left: 6.7%;
+}
+#popcorn {
+  top: 46.4%;
+  left: 3.1%;
+}
+#ramen {
+  top: 18.4%;
+  left: 13.6%;
+}
+
+/* Utilites */
+/* margin classes */
+.margin-top,
+.margin-y,
+.margin {
+  margin-top: var(--margin-big);
+}
+
+.margin-bottom,
+.margin-y,
+.margin {
+  margin-bottom: var(--margin-big);
+}
+
+.margin-x,
+.margin {
+  margin-left: var(--margin-big);
+  margin-right: var(--margin-big);
+}
+
+/*flex divs */
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
