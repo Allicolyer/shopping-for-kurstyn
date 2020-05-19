@@ -51,10 +51,23 @@ function dragElement(elmnt) {
       pos4 = e.clientY;
     }
     // set the element's new position relative to the larger picture
-    elmnt.style.top =
-      ((elmnt.offsetTop - pos2) / base.offsetHeight) * 100 + "%";
-    elmnt.style.left =
-      ((elmnt.offsetLeft - pos1) / base.offsetWidth) * 100 + "%";
+    let topPostion = ((elmnt.offsetTop - pos2) / base.offsetHeight) * 100;
+    let leftPosition = ((elmnt.offsetLeft - pos1) / base.offsetWidth) * 100;
+    // keep the food in bounds of the base pictures
+    if (topPostion < 0) {
+      topPostion = 0;
+    } else if (topPostion > 85) {
+      topPostion = 85;
+    }
+
+    if (leftPosition < 0) {
+      leftPosition = 0;
+    } else if (leftPosition > 85) {
+      leftPosition = 85;
+    }
+
+    elmnt.style.top = `${topPostion}%`;
+    elmnt.style.left = `${leftPosition}%`;
   }
 
   function closeDragElement() {
