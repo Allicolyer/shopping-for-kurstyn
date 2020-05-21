@@ -1,10 +1,10 @@
-// media query for larger picture
+// query selector for larger picture
 let base = document.getElementById("base-picture");
 
 let foodItems = document.getElementsByClassName("food");
 for (var i = 0; i < foodItems.length; i++) {
   dragElement(foodItems[i]);
-  //set z-indexes in the order they appear on the pages1
+  //set z-indexes in the order they appear on the pages
   foodItems[i].style.zIndex = i;
 }
 
