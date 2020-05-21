@@ -90,3 +90,74 @@ function dragElement(elmnt) {
     elmnt.style.left = `${leftPercentage}%`;
   }
 }
+
+//all initalPositions for reset button
+let initalPositions = {
+  chicken: {
+    tag: "#chicken",
+    top: "47.82%",
+    left: "8.8%",
+  },
+  chocolate: {
+    tag: "#chocolate",
+    top: "32.32%",
+    left: "20.7%",
+  },
+  croissant: {
+    tag: "#croissant",
+    top: "13.9%",
+    left: "9.1%",
+  },
+  fries: {
+    tag: "#fries",
+    top: "48.72%",
+    left: "1.3%",
+  },
+  hamburger: {
+    tag: "#hamburger",
+    top: "47.52%",
+    left: "18%",
+  },
+  hotdog: {
+    tag: "#hotdog",
+    top: "37.29%",
+    left: "7%",
+  },
+  pizza: {
+    tag: "#pizza",
+    top: "32.69%",
+    left: "12.4%",
+  },
+  popcorn: {
+    tag: "#popcorn",
+    top: "30.38%",
+    left: "2.3%",
+  },
+  ramen: {
+    tag: "#ramen",
+    top: "18.4%",
+    left: "13.6%",
+  },
+};
+
+//all food ids
+foodIds = [
+  "chicken",
+  "chocolate",
+  "croissant",
+  "hamburger",
+  "hotdog",
+  "fries",
+  "pizza",
+  "popcorn",
+  "ramen",
+];
+
+//reset button
+document.getElementById("reset").addEventListener("click", function () {
+  foodIds.forEach((id) => {
+    let el = document.getElementById(id);
+    el.style.top = initalPositions[id].top;
+    el.style.left = initalPositions[id].left;
+  });
+});
